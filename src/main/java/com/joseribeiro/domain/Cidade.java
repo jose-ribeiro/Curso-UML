@@ -1,5 +1,6 @@
 package com.joseribeiro.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
@@ -12,6 +13,7 @@ public class Cidade implements Serializable {
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Integer id;
     private String nome;
+
 
     @ManyToOne
     @JoinColumn(name="estado_id")
