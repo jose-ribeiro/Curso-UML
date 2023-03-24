@@ -1,5 +1,6 @@
 package com.joseribeiro.domain;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
@@ -19,7 +20,7 @@ public class Cliente implements Serializable {
     private String email;
     private String cpfOuCnpj;
     private Integer tipo;
-
+    @JsonIgnore
     @OneToMany(mappedBy="cliente")
     private List<Endereco> enderecos = new ArrayList<>();
 

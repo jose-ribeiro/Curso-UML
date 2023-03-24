@@ -1,13 +1,14 @@
 package com.joseribeiro.resouce;
 
 import com.joseribeiro.domain.Cliente;
+import com.joseribeiro.repositories.ClienteRepository;
 import com.joseribeiro.services.ClienteService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @RestController
 @RequestMapping(value="/clientes")
@@ -21,4 +22,5 @@ public class ClienteResource {
         Cliente obj = service.buscar(id);
         return ResponseEntity.ok().body(obj);
     }
+
 }
