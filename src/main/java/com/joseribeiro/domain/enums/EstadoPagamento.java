@@ -1,4 +1,4 @@
-package com.joseribeiro.domain;
+package com.joseribeiro.domain.enums;
 
 public enum EstadoPagamento {
 

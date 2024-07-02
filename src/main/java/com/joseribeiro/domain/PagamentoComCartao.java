@@ -1,5 +1,6 @@
 package com.joseribeiro.domain;
 
+import com.joseribeiro.domain.enums.EstadoPagamento;
 import jakarta.persistence.Entity;
 
 @Entity

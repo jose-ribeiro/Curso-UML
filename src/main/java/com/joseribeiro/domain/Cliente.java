@@ -1,8 +1,8 @@
 package com.joseribeiro.domain;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -12,7 +12,6 @@ import java.util.Set;
 @Entity
 public class Cliente implements Serializable {
     private static final long serialVersionUID = 1L;
-
     @Id
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Integer id;
@@ -21,9 +20,12 @@ public class Cliente implements Serializable {
     private String cpfOuCnpj;
     private Integer tipo;
 
+
+    @JsonIgnore
     @OneToMany(mappedBy="cliente")
     private List<Endereco> enderecos = new ArrayList<>();
 
+    @JsonBackReference
     @OneToMany(mappedBy="cliente")
     private List<Pedido> pedidos = new ArrayList<>();
 
