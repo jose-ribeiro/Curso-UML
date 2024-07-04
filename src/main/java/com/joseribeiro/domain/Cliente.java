@@ -1,7 +1,7 @@
 package com.joseribeiro.domain;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.joseribeiro.domain.enums.TipoCliente;
 import jakarta.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -21,11 +21,10 @@ public class Cliente implements Serializable {
     private Integer tipo;
 
 
-    @JsonIgnore
     @OneToMany(mappedBy="cliente")
     private List<Endereco> enderecos = new ArrayList<>();
 
-    @JsonBackReference
+    @JsonIgnore
     @OneToMany(mappedBy="cliente")
     private List<Pedido> pedidos = new ArrayList<>();
 

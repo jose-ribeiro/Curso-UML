@@ -2,6 +2,7 @@ package com.joseribeiro;
 
 import com.joseribeiro.domain.*;
 import com.joseribeiro.domain.enums.EstadoPagamento;
+import com.joseribeiro.domain.enums.TipoCliente;
 import com.joseribeiro.repositories.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;

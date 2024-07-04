@@ -1,5 +1,6 @@
 package com.joseribeiro.resouce;
 
+import com.joseribeiro.domain.Pedido;
 import com.joseribeiro.services.PedidoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -17,7 +18,7 @@ public class PedidoResource {
 
     @RequestMapping(value="/{id}", method= RequestMethod.GET)
     public ResponseEntity<?> find(@PathVariable Integer id) {
-        Object obj = service.buscar(id);
+        Pedido obj = service.buscar(id);
         return ResponseEntity.ok().body(obj);
     }
 }
