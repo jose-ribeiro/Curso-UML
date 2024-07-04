@@ -1,4 +1,4 @@
-package com.joseribeiro.resouce.exception;
+package com.joseribeiro.controller;
 
 import com.joseribeiro.domain.Cidade;
 import com.joseribeiro.repositories.CidadeRepository;
@@ -11,7 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(value = "cidades")
-public class cidadeResource {
+public class cidadeController {
 
     @Autowired
     private CidadeRepository cidadeRepository;

@@ -1,4 +1,4 @@
-package com.joseribeiro.resouce.exception;
+package com.joseribeiro.controller.exception;
 import java.io.Serializable;
 
 public class StandardError implements Serializable {

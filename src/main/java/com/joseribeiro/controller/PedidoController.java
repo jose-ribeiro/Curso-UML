@@ -1,7 +1,7 @@
-package com.joseribeiro.resouce;
+package com.joseribeiro.controller;
 
-import com.joseribeiro.domain.Categoria;
-import com.joseribeiro.services.CategoriaService;
+import com.joseribeiro.domain.Pedido;
+import com.joseribeiro.services.PedidoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -9,17 +9,16 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-
 @RestController
-@RequestMapping(value="/categorias")
-public class CategoriaResource {
+@RequestMapping(value="/pedidos")
+public class PedidoController {
 
     @Autowired
-    CategoriaService service;
-    @RequestMapping(value="/{id}", method=RequestMethod.GET)
+    private PedidoService service;
+
+    @RequestMapping(value="/{id}", method= RequestMethod.GET)
     public ResponseEntity<?> find(@PathVariable Integer id) {
-        Categoria obj = service.find(id);
+        Pedido obj = service.buscar(id);
         return ResponseEntity.ok().body(obj);
     }
-
 }

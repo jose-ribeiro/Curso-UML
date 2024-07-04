@@ -1,4 +1,4 @@
-package com.joseribeiro.resouce;
+package com.joseribeiro.controller;
 
 import com.joseribeiro.domain.Estado;
 import com.joseribeiro.repositories.EstadoRepository;
@@ -11,7 +11,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping(value = "/estado")
-public class EstadoResource {
+public class EstadoController {
     @Autowired
     private EstadoRepository estadoRepository;
 

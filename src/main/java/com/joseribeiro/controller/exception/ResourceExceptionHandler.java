@@ -1,4 +1,4 @@
-package com.joseribeiro.resouce.exception;
+package com.joseribeiro.controller.exception;
 
 import com.joseribeiro.services.exceptions.ObjectNotFoundException;
 import jakarta.servlet.http.HttpServletRequest;
