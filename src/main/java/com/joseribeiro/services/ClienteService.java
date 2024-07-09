@@ -35,7 +35,6 @@ public class ClienteService {
     @Transactional
     public Cliente salvar(Cliente cliente){
         var clientSalvo = clienteRepository.save(cliente);
-
         var listaEndereco = new ArrayList<Endereco>();
 
         cliente.getEnderecos().forEach(endereco -> {
@@ -47,7 +46,6 @@ public class ClienteService {
         });
 
         cliente.setEnderecos(listaEndereco);
-
         return clientSalvo;
     }
 
