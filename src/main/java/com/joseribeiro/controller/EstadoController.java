@@ -1,11 +1,10 @@
 package com.joseribeiro.controller;
 
 import com.joseribeiro.domain.Estado;
-import com.joseribeiro.repositories.EstadoRepository;
+import com.joseribeiro.services.EstadoService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -13,10 +12,15 @@ import java.util.List;
 @RequestMapping(value = "/estado")
 public class EstadoController {
     @Autowired
-    private EstadoRepository estadoRepository;
+    private EstadoService estadoService;
 
     @GetMapping
     public List<Estado> findAll(){
-        return estadoRepository.findAll();
+        return estadoService.listar();
+    }
+    @RequestMapping(value="/{id}", method= RequestMethod.GET)
+    public ResponseEntity<?> find(@PathVariable Integer id) {
+        Estado obj = estadoService.buscar(id);
+        return ResponseEntity.ok().body(obj);
     }
 }
