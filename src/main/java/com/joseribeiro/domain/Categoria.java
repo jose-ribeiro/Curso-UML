@@ -1,8 +1,6 @@
 package com.joseribeiro.domain;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
-
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -17,7 +15,7 @@ public class Categoria implements Serializable {
     private String nome;
 
 
-    @ManyToMany(mappedBy="categorias")
+    @OneToMany(mappedBy="categoria")
     private List<Produto> produtos = new ArrayList<>();
 
     public Categoria() {

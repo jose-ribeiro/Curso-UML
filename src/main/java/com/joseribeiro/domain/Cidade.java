@@ -1,6 +1,5 @@
 package com.joseribeiro.domain;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import java.io.Serializable;

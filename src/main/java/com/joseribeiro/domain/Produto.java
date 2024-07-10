@@ -1,6 +1,5 @@
 package com.joseribeiro.domain;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import java.io.Serializable;
@@ -19,13 +18,9 @@ public class Produto  implements Serializable {
     private String nome;
     private Double preco;
 
-    @JsonIgnore
-    @ManyToMany
-    @JoinTable(name = "PRODUTO_CATEGORIA",
-            joinColumns = @JoinColumn(name = "produto_id"),
-            inverseJoinColumns = @JoinColumn(name = "categoria_id")
-    )
-    private List<Categoria> categorias = new ArrayList<>();
+    @ManyToOne
+    @JoinColumn(name = "categoria_id")
+    private Categoria categoria;
 
     @JsonIgnore
     @OneToMany(mappedBy="id.produto")
@@ -33,11 +28,12 @@ public class Produto  implements Serializable {
     public Produto() {
     }
 
-    public Produto(Integer id, String nome, Double preco) {
+    public Produto(Integer id, String nome, Double preco, Categoria categoria) {
         super();
         this.id = id;
         this.nome = nome;
         this.preco = preco;
+        this.categoria = categoria;
     }
     @JsonIgnore
     public List<Pedido> getPedidos() {
@@ -73,12 +69,12 @@ public class Produto  implements Serializable {
         this.preco = preco;
     }
 
-    public List<Categoria> getCategorias() {
-        return categorias;
+    public Categoria getCategoria() {
+        return categoria;
     }
 
-    public void setCategorias(List<Categoria> categorias) {
-        this.categorias = categorias;
+    public void setCategoria(Categoria categoria) {
+        this.categoria = categoria;
     }
 
     public Set<ItemPedido> getItens() {
