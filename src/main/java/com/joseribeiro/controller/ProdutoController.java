@@ -29,10 +29,10 @@ public class ProdutoController {
         return produtoService.listar();
     }
 
-    @PostMapping
-    @ResponseStatus(HttpStatus.CREATED)
-    public Produto adicionar (@Validated @RequestBody Produto produto){
-        return produtoService.salvar(produto);
+    @PostMapping("/categoria/{categoriaId}")
+    public ResponseEntity<Produto> adicionarProduto(@PathVariable Integer categoriaId, @RequestBody Produto produto) {
+        Produto novoProduto = produtoService.adicionarProduto(categoriaId, produto);
+        return ResponseEntity.ok(novoProduto);
     }
 
 }

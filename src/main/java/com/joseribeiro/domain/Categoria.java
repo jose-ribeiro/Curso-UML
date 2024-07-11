@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 public class Categoria implements Serializable {
@@ -15,8 +16,8 @@ public class Categoria implements Serializable {
     private String nome;
 
 
-    @OneToMany(mappedBy="categoria")
-    private List<Produto> produtos = new ArrayList<>();
+    @ManyToMany(mappedBy="categorias")
+    private Set<Produto> produtos;
 
     public Categoria() {
     }
@@ -50,11 +51,12 @@ public class Categoria implements Serializable {
         result = prime * result + ((id == null) ? 0 : id.hashCode());
         return result;
     }
-    public List<Produto> getProdutos() {
+
+    public Set<Produto> getProdutos() {
         return produtos;
     }
 
-    public void setProdutos(List<Produto> produtos) {
+    public void setProdutos(Set<Produto> produtos) {
         this.produtos = produtos;
     }
 

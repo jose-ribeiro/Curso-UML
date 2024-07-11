@@ -18,9 +18,13 @@ public class Produto  implements Serializable {
     private String nome;
     private Double preco;
 
-    @ManyToOne
-    @JoinColumn(name = "categoria_id")
-    private Categoria categoria;
+    @JsonIgnore
+    @ManyToMany
+    @JoinTable(name = "PRODUTO_CATEGORIA",
+            joinColumns = @JoinColumn(name = "produto_id"),
+            inverseJoinColumns = @JoinColumn(name = "categoria_id")
+    )
+    private Set<Categoria> categorias;
 
     @JsonIgnore
     @OneToMany(mappedBy="id.produto")
@@ -28,12 +32,12 @@ public class Produto  implements Serializable {
     public Produto() {
     }
 
-    public Produto(Integer id, String nome, Double preco, Categoria categoria) {
+    public Produto(Integer id, String nome, Double preco) {
         super();
         this.id = id;
         this.nome = nome;
         this.preco = preco;
-        this.categoria = categoria;
+
     }
     @JsonIgnore
     public List<Pedido> getPedidos() {
@@ -69,12 +73,12 @@ public class Produto  implements Serializable {
         this.preco = preco;
     }
 
-    public Categoria getCategoria() {
-        return categoria;
+    public Set<Categoria> getCategorias() {
+        return categorias;
     }
 
-    public void setCategoria(Categoria categoria) {
-        this.categoria = categoria;
+    public void setCategorias(Set<Categoria> categorias) {
+        this.categorias = categorias;
     }
 
     public Set<ItemPedido> getItens() {
