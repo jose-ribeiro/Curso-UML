@@ -58,7 +58,7 @@ public class Pedido implements Serializable {
         return instante;
     }
 
-    public void setInstante(LocalDateTime instante) {
+    public void dataCriacaoPedido(LocalDateTime instante) {
         this.instante = instante;
     }
 

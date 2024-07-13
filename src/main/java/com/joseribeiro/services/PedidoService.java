@@ -30,6 +30,9 @@ public class PedidoService {
     @Autowired
     private PagamentoRepository pagamentoRepository;
 
+    @Autowired
+    private  ItemPedidoRepository itemPedidoRepository;
+
 
 
     public Pedido buscar(Integer id) {
@@ -62,7 +65,12 @@ public class PedidoService {
         }
         pagamento.setPedido(pedido);
 
-        pedido.setInstante(LocalDateTime.now());
+        pedido.dataCriacaoPedido(LocalDateTime.now());
+
+
+
+        var pedidoSalvo = pedidoRepository.save(pedido);
+        pagamento.setPedido(pedidoSalvo);
 
         // Adicionar Itens do Pedido
 
@@ -74,10 +82,13 @@ public class PedidoService {
             Produto produto = produtoOptional.get();
             item.setProduto(produto);
             item.setPedido(pedido);
+            item.setPreco(item.getQuantidade() * item.getProduto().getPreco());
+            itemPedidoRepository.save(item);
         }
 
         pagamentoRepository.save(pagamento);
-        return pedidoRepository.save(pedido);
+
+        return pedidoSalvo;
     }
 
     public List<Pedido> listar (){
