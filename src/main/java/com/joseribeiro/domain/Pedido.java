@@ -1,12 +1,10 @@
 package com.joseribeiro.domain;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.io.Serializable;
-import java.util.Date;
+import java.time.LocalDateTime;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -19,7 +17,7 @@ public class Pedido implements Serializable {
     @GeneratedValue(strategy= GenerationType.IDENTITY)
     private Integer id;
     @JsonFormat(pattern="dd/MM/yyyy HH:mm")
-    private Date instante;
+    private LocalDateTime instante;
 
 
     @OneToOne(cascade=CascadeType.ALL, mappedBy="pedido")
@@ -40,7 +38,7 @@ public class Pedido implements Serializable {
     public Pedido() {
     }
 
-    public Pedido(Integer id, Date instante, Cliente cliente, Endereco enderecoDeEntrega) {
+    public Pedido(Integer id, LocalDateTime instante, Cliente cliente, Endereco enderecoDeEntrega) {
         super();
         this.id = id;
         this.instante = instante;
@@ -56,11 +54,11 @@ public class Pedido implements Serializable {
         this.id = id;
     }
 
-    public Date getInstante() {
+    public LocalDateTime getInstante() {
         return instante;
     }
 
-    public void setInstante(Date instante) {
+    public void setInstante(LocalDateTime instante) {
         this.instante = instante;
     }
 
