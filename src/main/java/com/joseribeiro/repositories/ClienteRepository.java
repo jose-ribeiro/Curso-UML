@@ -9,4 +9,5 @@ import java.util.List;
 @Repository
 public interface ClienteRepository extends JpaRepository<Cliente, Integer> {
 
+    Cliente findById(Long id);
 }

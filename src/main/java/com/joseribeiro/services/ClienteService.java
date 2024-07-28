@@ -52,4 +52,24 @@ public class ClienteService {
     public List<Cliente> listar (){
         return clienteRepository.findAll();
     }
+
+    public Cliente updateCliente(Long id, Cliente clienteDetails) {
+        Cliente cliente = clienteRepository.findById(id);
+
+        cliente.setNome(clienteDetails.getNome());
+        cliente.setEmail(clienteDetails.getEmail());
+        cliente.setCpfOuCnpj(clienteDetails.getCpfOuCnpj());
+        cliente.setTipo(clienteDetails.getTipo());
+        cliente.setEnderecos(clienteDetails.getEnderecos());
+        cliente.setTelefones(clienteDetails.getTelefones());
+
+        final Cliente updatedCliente = clienteRepository.save(cliente);
+        return updatedCliente;
+    }
+
+    public void deleteCliente(Long id) {
+        Cliente cliente = clienteRepository.findById(id);
+
+        clienteRepository.delete(cliente);
+    }
 }
