@@ -51,12 +51,12 @@ public class PedidoService {
         pedido.setCliente(cliente);
 
         // Buscar Endereço de Entrega
-        Optional<Endereco> enderecoOptional = enderecoRepository.findById(pedido.getEnderecoDeEntrega().getId());
-        if (!enderecoOptional.isPresent()) {
-            throw new RuntimeException("Endereço de entrega não encontrado");
-        }
-        Endereco enderecoDeEntrega = enderecoOptional.get();
-        pedido.setEnderecoDeEntrega(enderecoDeEntrega);
+        //Optional<Endereco> enderecoOptional = enderecoRepository.findById(pedido.getEnderecoDeEntrega().getId());
+        //if (!enderecoOptional.isPresent()) {
+          //  throw new RuntimeException("Endereço de entrega não encontrado");
+       // }
+        //Endereco enderecoDeEntrega = enderecoOptional.get();
+        //pedido.setEnderecoDeEntrega(enderecoDeEntrega);
 
         // Criar Pagamento
         Pagamento pagamento = pedido.getPagamento();
